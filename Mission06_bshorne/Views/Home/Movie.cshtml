@@ -7,8 +7,18 @@
 
 <div>
     <form method="post">
-        <label asp-for="Category">Category: </label>
-        <input asp-for="Category" /><br />
+
+        <div asp-validation-summary="All"></div>
+
+        <label asp-for="CategoryID">Category: </label>
+        <select asp-for="CategoryID">
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
+        </select><br />
+        
 
         <label asp-for="Title">Title: </label>
         <input asp-for="Title" /><br />
@@ -30,7 +40,7 @@
         <label asp-for="Edited">Is the movie edited: </label>
         <select asp-for="Edited">
             <option value="true">Yes</option>
-            <option value="flase">No</option>
+            <option value="false">No</option>
         </select><br />
 
         <label asp-for="Lent">Lent to: </label>
@@ -39,7 +49,6 @@
         <label asp-for="Notes">Notes: </label>
         <input asp-for="Notes" /><br />
         
-        <div asp-validation-summary="All"></div>
         
         <button type="submit">Submit</button>
     </form>

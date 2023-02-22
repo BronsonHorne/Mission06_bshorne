@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Movie List";
+}
+
+@model List<ApplicationResponse>
+
+<table class="table table-bordered table-hover">
+    
+    <thead class="font-weight-bold table-active">
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>Lent to</td>
+            <td>Notes</td>
+        </tr>
+    </thead>
+    <!--For Each row in the sqlite, input the values-->
+    <tbody>
+        @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Category.CategoryName</td>
+                    <td>@x.Title</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@x.Edited</td>
+                    <td>@x.Lent</td>
+                    <td>@x.Notes</td>
+
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.ApplicationId">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.ApplicationId">Delete</a></td>
+                </tr>
+            }
+    </tbody>
+        
+</table>

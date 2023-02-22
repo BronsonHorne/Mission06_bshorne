@@ -11,9 +11,11 @@ namespace Mission06_bshorne.Models
         [Key]
         [Required]
         public int ApplicationId { get; set; }
-        [Required]
-        public string Category { get; set; }
-        [Required]
+        [Required(ErrorMessage = "What Category is the movie?")]
+        //Building Foreign Key Relationship
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
+        [Required(ErrorMessage ="Share the name of the movie!")]
         public string Title { get; set; }
         [Required]
         public int Year { get; set; }

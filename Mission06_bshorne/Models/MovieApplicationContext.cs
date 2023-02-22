@@ -14,15 +14,31 @@ namespace Mission06_bshorne.Models
             //Leave blank for now
         }
         public DbSet<ApplicationResponse> Responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
+        //Seed Data
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                    new Category { CategoryID = 1, CategoryName = "Action"},
+                    new Category { CategoryID = 2, CategoryName = "Adventure" },
+                    new Category { CategoryID = 3, CategoryName = "Comedy" },
+                    new Category { CategoryID = 4, CategoryName = "Drama" },
+                    new Category { CategoryID = 5, CategoryName = "Fantasy" },
+                    new Category { CategoryID = 6, CategoryName = "Horror" },
+                    new Category { CategoryID = 7, CategoryName = "Musical" },
+                    new Category { CategoryID = 8, CategoryName = "Mystery" },
+                    new Category { CategoryID = 9, CategoryName = "Romance" },
+                    new Category { CategoryID = 10, CategoryName = "Science Fiction" },
+                    new Category { CategoryID = 11, CategoryName = "Thriller" }
+                );
+
             mb.Entity<ApplicationResponse>().HasData(
 
                 new ApplicationResponse
                 {
                     ApplicationId = 1,
-                    Category = "Action",
+                    CategoryID = 1,
                     Title = "The Accountant",
                     Year = 2016,
                     Director = "Gavin O'Connor",
@@ -34,7 +50,7 @@ namespace Mission06_bshorne.Models
                 new ApplicationResponse
                 {
                     ApplicationId = 2,
-                    Category = "Action",
+                    CategoryID = 1,
                     Title = "Inception",
                     Year = 2010,
                     Director = "Christopher Nolan",
@@ -46,7 +62,7 @@ namespace Mission06_bshorne.Models
                 new ApplicationResponse
                 {
                     ApplicationId = 3,
-                    Category = "Action",
+                    CategoryID = 1,
                     Title = "Deadpool",
                     Year = 2016,
                     Director = "Tim Miller",
